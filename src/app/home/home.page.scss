@@ -1,0 +1,16 @@
+.header {
+    font-weight: 600;
+}
+.results-list{
+    border-width: 5px;
+    border-color: red;
+    border-style: solid;
+}
+.results-list ion-item {
+    color: blue;
+    font-style: bold;
+
+}
+.results-list ion-item span {
+    font-style: italic;
+}

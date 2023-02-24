@@ -1,31 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Geolocation Demo
-    </ion-title>
+    <h1 class="header">Sample App with ion-datetime component.</h1>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-list-header>Coordinates</ion-list-header>
-    <ion-item>
-      <ion-label>
-        <h2>Latitude</h2>
-        <h3>Not Available</h3>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h2>Longitude</h2>
-        <h3>Not Available</h3>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h2>Altitude</h2>
-        <h3>Not Available</h3>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <form [formGroup]="futureDateForm" (ngSubmit)="onSubmit($event)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Select a date from future</ion-label>
+        <ion-datetime
+          placeHolder="Select Date"
+          displayFormat="MMM DD, YYYY"
+          formControlName="futureDate"
+          min="{{minDate}}"
+          max="{{maxDate}}"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-button type="submit" color="primary"> Submit </ion-button>
+      </ion-item>
+      <div *ngIf="dateSubmitted" class="results-list">
+        <ion-item> Today: <span>{{today}} </span></ion-item>
+        <ion-item> Yesterday: <span>{{yesterday}}</span></ion-item>
+        <ion-item>
+          10 days past selected date:
+          <span>{{tenYearsPassedSelected}}</span></ion-item
+        >
+        <ion-item>
+          1 year past selected date:
+          <span>{{oneYearPassedSelected}}</span></ion-item
+        >
+      </div>
+    </ion-list>
+  </form>
 </ion-content>
